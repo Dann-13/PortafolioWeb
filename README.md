@@ -1,2 +1,2 @@
 # Portafolio NextJs, Framer Motion!
-Pronto actualizacion del readme
+Pronto actualizacion del readmen
