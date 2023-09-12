@@ -55,7 +55,7 @@ const Home = () => {
         <div className="bg-none xl:bg-explosion mix-blend-color-dodge xl:bg-cover xl:bg-right xl:bg-no-repeat 
         w-full h-full absolute translate-z-0"></div>
         {/*particles */}
-        
+        <ParticlesContainer />
         <motion.div 
         initial={{ opacity: 0 }} // Establece la opacidad inicial en 0
         animate={{ opacity: 1 }} // Anima la opacidad a 1
