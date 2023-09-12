@@ -6,12 +6,6 @@ import Avatar from '../components/Avatar'
 import { motion } from 'framer-motion'
 import { fadeIn } from '../variants'
 
-const fadeInOpacity = {
-  hidden: { opacity: 0},
-  show: { opacity: 1 },
-  exit: { opacity: 0 },
-};
-
 const Home = () => {
   return (
     <div className="bg-[#0E1933] h-full">
@@ -61,13 +55,13 @@ const Home = () => {
         <div className="bg-none xl:bg-explosion mix-blend-color-dodge xl:bg-cover xl:bg-right xl:bg-no-repeat 
         w-full h-full absolute translate-z-0"></div>
         {/*particles */}
-        <div>particles</div>
+        
         <motion.div 
-        variants={fadeInOpacity}
-        initial="hidden"
-        animate="show"
-        exit="hidden"
-        className="w-full h-full max-w-[300px] max-h-[250px] absolute lg:right-[15%] lg:top-[25%]">
+        initial={{ opacity: 0 }} // Establece la opacidad inicial en 0
+        animate={{ opacity: 1 }} // Anima la opacidad a 1
+        exit={{ opacity: 0 }} // Ajusta el estado de salida según tus necesidades
+        transition={{ duration: 2, delay: 0.2, ease: 'easeInOut' }}
+        className="w-full h-full max-w-[300px] max-h-[250px] absolute lg:right-[15%] xl:top-[30%]">
           <Avatar />
         </motion.div>
       </div>
