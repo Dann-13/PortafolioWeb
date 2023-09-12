@@ -15,6 +15,7 @@ import {
   SiAdobephotoshop,
 } from "react-icons/si";
 
+import Avatar from '../../components/Avatar'
 
 //  data
 const aboutData = [
@@ -89,7 +90,11 @@ const aboutData = [
 ];
 
 const About = () => {
-  return <div>About</div>;
+  return <div>
+    <div className="w-full h-full max-w-[737px] max-h-[678px] absolute">
+          <Avatar />
+        </div>
+  </div>;
 };
 
 export default About;

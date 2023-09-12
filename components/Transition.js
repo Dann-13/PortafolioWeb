@@ -20,12 +20,12 @@ const Transition = () => {
   return (
     <>
       <motion.div className='fixed top-0 bottom-0 right-full w-screen z-0
-      bg-[#2A303F]' variants={transitionVariants} initial='initial' animate='animate' exit='exit'
+      bg-[#0F343D]' variants={transitionVariants} initial='initial' animate='animate' exit='exit'
         transition={{ delay: 0.2, duration: 0.6, ease: 'easeInOut' }}>
         
       </motion.div>
       <motion.div className='fixed top-0 bottom-0 right-full w-screen z-20
-      bg-[#20262E]' variants={transitionVariants} initial='initial' animate='animate' exit='exit'
+      bg-[#112F47]' variants={transitionVariants} initial='initial' animate='animate' exit='exit'
         transition={{ delay: 0.6, duration: 0.6, ease: 'easeInOut' }}>
         
       </motion.div>
