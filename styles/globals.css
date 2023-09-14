@@ -81,7 +81,7 @@
 
   /* Estilos del scrollbar */
   .custom-scroll-container::-webkit-scrollbar {
-    width: 8px;
+    width: 1px;
     /* Ancho del scrollbar */
   }
 
@@ -91,5 +91,6 @@
     border-radius: 4px;
     /* Borde redondeado del thumb */
   }
+  
 
 }

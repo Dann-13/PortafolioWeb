@@ -7,6 +7,10 @@ import {
   FaReact,
   FaWordpress,
   FaFigma,
+  FaNode,
+  FaNodeJs,
+  FaPython,
+  FaJava,
 } from "react-icons/fa";
 
 import {
@@ -31,13 +35,15 @@ const aboutData = [
       {
         title: 'Web Development',
         icons: [
+          <FaNodeJs />,
           <FaHtml5 />,
           <FaCss3 />,
           <FaJs />,
           <FaReact />,
           <SiNextdotjs />,
           <SiFramer />,
-          <FaWordpress />,
+          <FaJava />,
+          <FaPython />,
         ],
       },
       {
@@ -103,8 +109,8 @@ const About = () => {
 
   return (
     <div className="mb-[80px] py-28 bg-primary/30 text-center xl:text-left">
-      <Circles />
-      
+
+
       <motion.div
         variants={fadeIn('right', 0.2)}
         initial='hidden'
@@ -115,17 +121,32 @@ const About = () => {
       </motion.div>
       <div className="container  lg:pt-10  mx-auto h-full flex flex-col items-center xl:flex-row gap-6" >
         <div className="flex-1 flex flex-col justify-center">
-          <h2 className="h2">
+          <motion.h2
+            variants={fadeIn('right', 0.2)}
+            initial='hidden'
+            animate='show'
+            exit='hidden'
+            className="h2">
             Si puedes <span className="text-accent">imaginarlo</span> puedes crearlo
-          </h2>
-          <p className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0">
+          </motion.h2>
+          <motion.p
+            variants={fadeIn('right', 0.3)}
+            initial='hidden'
+            animate='show'
+            exit='hidden'
+            className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0">
             Soy un amante de la tecnología desde que era niño, y mi curiosidad me ha llevado a
             sumergirme profundamente en el mundo del desarrollo de software.
             Durante mis años de estudio en la universidad, he adquirido conocimientos sólidos en
             lenguajes de programación, diseño de software.
-          </p>
+          </motion.p>
           {/**Counters */}
-          <div>
+          <motion.div
+            variants={fadeIn('right', 0.4)}
+            initial='hidden'
+            animate='show'
+            exit='hidden'
+          >
             <div>
               {/**projets */}
               <div className="relative flex-1 after:w-[1px] after:h-full after:bg-white/10 
@@ -139,10 +160,15 @@ const About = () => {
               </div>
 
             </div>
-          </div>
+          </motion.div>
         </div>
         {/**Informacion */}
-        <div className="flex flex-col w-full xl:max-w-[48%] h:[400px]">
+        <motion.div 
+        variants={fadeIn('left', 0.4)}
+        initial='hidden'
+        animate='show'
+        exit='hidden'
+        className="flex flex-col w-full xl:max-w-[48%] h:[400px]">
           <div className="flex gap-x-4 xl:gap-x-8 mx-auto xl:mx-0 mb-4">
             {
               aboutData.map((item, itemIndex) => {
@@ -176,7 +202,7 @@ const About = () => {
                     <div className="flex gap-x-4">
                       {/**icons */}
                       {item.icons?.map((icon, itemIndex) => {
-                        return <div className="text-2xl text-white">
+                        return <div key={itemIndex} className="text-2xl text-white">
                           {icon}
                         </div>
                       })}
@@ -187,10 +213,9 @@ const About = () => {
             }
 
           </div>
-        </div>
+        </motion.div>
       </div>
 
-              
     </div>
   )
 };
