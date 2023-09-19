@@ -20,8 +20,8 @@ const Home = () => {
             animate="show"
             exit="hidden"
             className="text-3xl lg:text-4xl xl:text-5xl font-bold">
-            Transformando ideas <br /> Into {' '}
-            <span className="text-accent">Digital Reality</span>
+            Transformando ideas <br /> en un {' '}
+            <span className="text-accent">Entorno Diguital.</span>
           </motion.h1>
           {/*SubTitle */}
           <motion.p

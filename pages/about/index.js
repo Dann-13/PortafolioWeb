@@ -108,7 +108,7 @@ const About = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className="mb-[80px] py-28 bg-primary/30 text-center xl:text-left">
+    <div className=" py-28 bg-primary/30 text-center xl:text-left">
 
 
       <motion.div
