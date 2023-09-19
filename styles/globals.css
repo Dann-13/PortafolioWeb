@@ -8,14 +8,14 @@
 
 .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet,
 .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
-  background-color: #f13024;
+  background-color: #00CFC7;
 }
 
 .swiper-button-next:after,
 .swiper-button-prev:after,
 .swiper-button-next:after,
 .swiper-rtl .swiper-button-prev:after {
-  color: #f13024;
+  color: #00CFC7;
 }
 
 @layer base {
@@ -91,6 +91,6 @@
     border-radius: 4px;
     /* Borde redondeado del thumb */
   }
-  
+
 
 }
