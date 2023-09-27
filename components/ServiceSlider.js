@@ -6,31 +6,36 @@ import 'swiper/css/pagination'
 // icons
 import {
   RxCrop,
+  RxDatabase,
   RxDesktop,
   RxPencil2,
   RxReader,
   RxRocket,
   RxArrowTopRight
 } from 'react-icons/rx'
+import{
+  BsDatabaseCheck,
+  BsFillPaletteFill
+} from 'react-icons/bs'
 
 import { FreeMode, Pagination } from 'swiper'
 
 // data
 const serviceData = [
   {
-    icon: <RxCrop />,
-    title: 'Branding',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    icon: <BsDatabaseCheck />,
+    title: 'Desarrollo Backend',
+    description: 'Desarrollo de servidores, API y lógica de negocio para aplicaciones web y móviles.',
   },
   {
     icon: <RxPencil2 />,
-    title: 'Design',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    title: 'Desarrollo Frontend',
+    description: 'Diseño y desarrollo de interfaces de usuario interactivas y atractivas para aplicaciones web y móviles.',
   },
   {
-    icon: <RxDesktop />,
-    title: 'Development',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+    icon: <BsFillPaletteFill />,
+    title: 'Diseño UX/UI',
+  description: 'Creación de experiencias de usuario (UX) y diseño de interfaces de usuario (UI) atractivas y funcionales',
   },
   {
     icon: <RxReader />,
@@ -63,21 +68,21 @@ const ServiceSlider = () => {
       
     }}
     modules={[FreeMode, Pagination]}
-    className='h-[240px] sm:h-[340px]'
+    className='h-[240px] sm:h-[340px] '
   >
     {
       serviceData.map((item, index) => {
         
         return (
         <SwiperSlide key={index}>
-          <div className='bg-[#2A2F3D] h-max rounded-lg px-6 py-8 flex sm:flex-col
-          gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[#364654] transition-all duration-300'>
+          <div className='h-[300px] bg-[#2A2F3D] rounded-lg px-6 py-8 flex sm:flex-col
+          gap-x-6 sm:gap-x-0 group cursor-pointer hover:bg-[#364654] transition-all duration-300 '>
             {/** icon index*/}
             <div className='text-4xl text-accent mb-4'>{item.icon}</div>
             {/**tite */}
             <div>
               <div className='mb-2 text-lg'>{item.title}</div>
-              <p className='max-x-[350px] leading-normal'>{item.description}</p>
+              <p className='max-x-[350px] h-[150px] leading-normal '>{item.description}</p>
             </div>
             {/**Arrow */}
             <div className='text-3xl '>

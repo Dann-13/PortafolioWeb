@@ -40,7 +40,7 @@ const aboutData = [
           <FaCss3 />,
           <FaJs />,
           <FaReact />,
-          <SiNextdotjs />,
+          
           <SiFramer />,
           <FaJava />,
           <FaPython />,
@@ -57,47 +57,27 @@ const aboutData = [
     title: 'awards',
     info: [
       {
-        title: 'Webby Awards - Honoree',
-        stage: '2011 - 2012',
+        title: 'Graduado Con Honores Tenico en Sistemas',
+        stage: '2019',
       },
-      {
-        title: 'Adobe Design Achievement Awards - Finalist',
-        stage: '2009 - 2010',
-      },
+      
     ],
   },
+  
   {
     id: 3,
-    title: 'experience',
-    info: [
-      {
-        title: 'UX/UI Designer - XYZ Company',
-        stage: '2012 - 2023',
-      },
-      {
-        title: 'Web Developer - ABC Agency',
-        stage: '2010 - 2012',
-      },
-      {
-        title: 'Intern - DEF Corporation',
-        stage: '2008 - 2010',
-      },
-    ],
-  },
-  {
-    id: 4,
     title: 'credentials',
     info: [
       {
-        title: 'Web Development - ABC University, LA, CA',
-        stage: '2011',
+        title: 'Ingenieria Informatica - Universidad Autonoma De Nariño',
+        stage: '2019 - Presente',
       },
       {
-        title: 'Computer Science Diploma - AV Technical Institute',
-        stage: '2009',
+        title: 'Desarrollo Web y Aplicaciones Mobiles - Univeridad De Bucaramanga',
+        stage: '2022',
       },
       {
-        title: 'Certified Graphic Designer - ABC Institute, Los Angeles, CA',
+        title: 'Desarrollo Web y Diseño UX/UI - Oracle Next Educations',
         stage: '2006',
       },
     ],
@@ -135,7 +115,7 @@ const About = () => {
             animate='show'
             exit='hidden'
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0">
-            Soy un amante de la tecnología desde que era niño, y mi curiosidad me ha llevado a
+            Soy un amante de la tecnología desde que era niño, mi curiosidad me ha llevado a
             sumergirme profundamente en el mundo del desarrollo de software.
             Durante mis años de estudio en la universidad, he adquirido conocimientos sólidos en
             lenguajes de programación, diseño de software.
@@ -195,14 +175,14 @@ const About = () => {
                   <div key={item.id} className="flex-1 flex flex-col md:flex-row
                 max-w-max gap-x-2  items-center text-white/60">
                     {/**Title */}
-                    <div className="font-light items-center ">{item.title}</div>
+                    <div className="font-light items-center w-[200px] hover:text-accent">{item.title}</div>
                     <div className="hidden md:flex">-</div>
-                    <div>{item.stage}</div>
+                    <div className="hover:text-accent ">{item.stage}</div>
 
                     <div className="flex gap-x-4">
                       {/**icons */}
                       {item.icons?.map((icon, itemIndex) => {
-                        return <div key={itemIndex} className="text-2xl text-white">
+                        return <div key={itemIndex} className="text-2xl text-white hover:text-accent">
                           {icon}
                         </div>
                       })}
