@@ -22,8 +22,7 @@ const Services = () => {
           initial='hidden'
           animate='show'
           exit='hidden'
-          className='mb-4 max-w-[400px] mx-auto lg:mx-0'>Aqi va un texto el cual no se que ir pero lo pondre despues
-            este es un ejemplo xd
+          className='mb-4 max-w-[400px] mx-auto lg:mx-0'> En este espacio, te invito a explorar mi mundo de creatividad, innovación y soluciones técnicas
           </motion.p>
         </div>
         <motion.div 

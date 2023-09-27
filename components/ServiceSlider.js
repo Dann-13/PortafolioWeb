@@ -37,16 +37,7 @@ const serviceData = [
     title: 'Diseño UX/UI',
   description: 'Creación de experiencias de usuario (UX) y diseño de interfaces de usuario (UI) atractivas y funcionales',
   },
-  {
-    icon: <RxReader />,
-    title: 'Copywriting',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
-  {
-    icon: <RxRocket />,
-    title: 'SEO',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-  },
+
 ];
 
 

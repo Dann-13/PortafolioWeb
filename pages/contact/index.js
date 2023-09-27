@@ -2,47 +2,150 @@ import { BsArrowRight } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../variants';
 import emailJs from '@emailjs/browser'
-import React, { useRef } from 'react';
+import Modal from 'react-modal';
+import {CiCircleRemove} from 'react-icons/ci'
+import React, { useRef, useState } from 'react';
 
+Modal.setAppElement('#__next');
 
 const Contact = () => {
 
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isEmailValid, setIsEmailValid] = useState(true);
+  const [nameError, setNameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
+
   const refForm = useRef();
+
+  const customStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      transform: 'translate(-50%, -50%)',
+    },
+  };
+  const openModal = (message) => {
+    setSuccessMessage(message);
+    setIsModalOpen(true);
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(refForm.current)
-    const serviceId = 'service_x99lndh';
-    const templatedId = 'template_bfiw9sg'
-    const apiKey = 'dLuvcmIr9IW6YODus'
-    emailJs.sendForm(serviceId, templatedId, refForm.current, apiKey).then(result => console.log(result.text)).catch(error => console.error(error));
+
+    if (refForm.current.username.value.length < 7) {
+      setIsNameValid(false);
+      setNameError('El nombre debe tener al menos 7 caracteres.');
+      setErrorMessage('Por favor, corrige los errores en el formulario.');
+      return; // Evitar envío del formulario si la validación falla
+
+    } else {
+      setIsNameValid(true);
+      setNameError('');
+    }
+    const email = refForm.current.email.value;
+    const emailRegex = /^(([^<>()\[\]\.,;:\s@"]+(\.[^<>()\[\]\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/;
+    if (!emailRegex.test(email)) {
+      setIsEmailValid(false);
+      setEmailError('El correo electrónico no es válido.');
+      setErrorMessage('Por favor, corrige los errores en el formulario.');
+      return; // Evitar envío del formulario si la validación falla
+    } else {
+      setIsEmailValid(true);
+      setEmailError('');
+    }
+
+
+    // Si todas las validaciones pasan, enviar el formularios
+    const serviceId = 'service_tvuj14w';
+    const templatedId = 'template_olumtxb';
+    const apiKey = 'WZXL1p2dlu9uSgos0';
+    emailJs
+      .sendForm(serviceId, templatedId, refForm.current, apiKey)
+      .then((result) => {
+        console.log(result.text);
+        openModal('Mensaje enviado'); // Mostrar la modal con el mensaje de éxito
+        refForm.current.reset(); // Limpiar los campos del formulario
+      })
+      .catch((error) => console.error(error));
 
 
   }
 
   return (
-    <section class="body-font relative bg-gray-900 text-gray-400">
+    <section className="body-font relative bg-gray-900 text-gray-400">
 
-      <div class="container mx-auto px-5 py-36 xl:pb-0">
+      <div className="container mx-auto px-5 py-36 xl:pb-0">
 
-        <div class="mb-12 flex w-full flex-col text-center">
-          <h1 class="title-font mb-4 text-2xl font-medium text-white sm:text-3xl">Contactame!</h1>
+        <div className="mb-12 flex w-full flex-col text-center">
+          <h1 className="title-font mb-4 text-2xl font-medium text-white sm:text-3xl">¡Contactame!</h1>
 
         </div>
-
         <div className="mx-auto md:w-2/3 lg:w-1/2">
 
           <div className="">
             <form ref={refForm} onSubmit={handleSubmit} className='-m-2 flex flex-wrap items-center'>
               <div className="w-1/2 p-2">
                 <div className="relative">
-                  <input type="text" id="name" name="username" className="peer w-full rounded border border-gray-700 bg-gray-800 bg-opacity-40 py-1 px-3 text-base leading-8 text-gray-100 placeholder-transparent outline-none transition-colors duration-200 ease-in-out focus:border-accent focus:bg-gray-900 focus:ring-2 " placeholder="Nombre" required/>
-                  <label for="name" class="absolute left-3 -top-6 bg-transparent text-sm leading-7 text-indigo-500 transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-2 peer-placeholder-shown:bg-gray-900 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent">Nombre</label>
+                  <input type="text"
+                    id="name"
+                    name="username"
+
+                    placeholder="Nombre"
+                    className={`peer w-full rounded border border-gray-700 bg-gray-800 bg-opacity-40 py-1 px-3 text-base leading-8 text-gray-100 placeholder-transparent outline-none transition-colors duration-200 ease-in-out focus:border-accent focus:bg-gray-900 focus:ring-2 ${!isNameValid ? 'border-red-500' : ''
+                      }`}
+
+                    onChange={(e) => {
+                      if (e.target.value.length < 7) {
+                        setIsNameValid(false);
+                        setNameError('El nombre debe tener al menos 7 caracteres.');
+
+                      } else {
+                        setIsNameValid(true);
+                        setNameError('');
+                      }
+                    }}
+                    required />
+                  <label for="name"
+                    className="absolute left-3 -top-6 bg-transparent text-sm leading-7 text-white/40 transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-2 peer-placeholder-shown:bg-gray-900 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent">Nombre
+                  </label>
+                  {isNameValid ? null : (
+                    <div className="text-red-500 text-xs mt-1">{nameError}</div>
+                  )}
                 </div>
               </div>
               <div className="w-1/2 p-2">
                 <div className="relative">
-                  <input type="email" id="email" name="email" className="peer w-full rounded border border-gray-700 bg-gray-800 bg-opacity-40 py-1 px-3 text-base leading-8 text-gray-100 placeholder-transparent outline-none transition-colors duration-200 ease-in-out focus:border-accent focus:bg-gray-900 focus:ring-2 " placeholder="Email" required/>
-                  <label for="email" class="absolute left-3 -top-6 bg-transparent text-sm leading-7 text-indigo-500 transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-2 peer-placeholder-shown:bg-gray-900 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent">Correo</label>
+                  <input type="email"
+                    id="email"
+                    name="email"
+                    className={`peer w-full rounded border border-gray-700 bg-gray-800 bg-opacity-40 py-1 px-3 text-base leading-8 text-gray-100 placeholder-transparent outline-none transition-colors duration-200 ease-in-out focus:border-accent focus:bg-gray-900 focus:ring-2 ${!isEmailValid ? 'border-red-500' : ''
+                      }`}
+                    placeholder="Email"
+                    onChange={(e) => {
+                      const email = e.target.value;
+                      const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+                      if (!emailRegex.test(email)) {
+                        setIsEmailValid(false);
+                        setEmailError('El correo electrónico no es válido.');
+                      } else {
+                        setIsEmailValid(true);
+                        setEmailError('');
+                      }
+
+                    }}
+
+                    required />
+                  <label for="email"
+                    className="absolute left-3 -top-6 bg-transparent text-sm leading-7 text-white/40 transition-all peer-placeholder-shown:left-3 peer-placeholder-shown:top-2 peer-placeholder-shown:bg-gray-900 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-focus:left-3 peer-focus:-top-6 peer-focus:text-sm peer-focus:text-accent">
+                    Correo</label>
+                  {isEmailValid ? null : (
+                    <div id="err" className="text-red-500 text-xs mt-1">{emailError}</div>
+                  )}
                 </div>
               </div>
               <div className="mt-4 w-full p-2">
@@ -52,6 +155,9 @@ const Contact = () => {
                 </div>
               </div>
               <div className="w-full p-2 ">
+                {errorMessage && (
+                  <div className="text-red-500 text-xs mt-2">{errorMessage}</div>
+                )}
                 <button className='btn rounded-full border border-white/50 max-w-[170px]
           px-8 transition-all duration-300 flex items-center justify-center overflow-hidden
           hover:border-accent group'>
@@ -66,6 +172,40 @@ const Contact = () => {
         </div>
 
       </div>
+      {/* Modal */}
+
+      <div className="bg-white">
+        {/* Contenido de la página */}
+        <Modal
+          isOpen={isModalOpen}
+          onRequestClose={() => setIsModalOpen(false)}
+          className="modal fixed inset-0 flex items-center justify-center z-50 "
+          overlayClassName="modal-overlay fixed inset-0"
+          contentLabel="Ejemplo de Modal"
+        >
+          <div className="modal-content bg-primary rounded-xl xl:w-1/2 p-4 border-2 border-accent w-[300px] ">
+            <h2 className="text-xl font-bold mb-4 text-white">¡Su mensaje se ha enviado exitosamente!</h2>
+            <p className="text-gray-100 text-[14px]">¡Gracias por ponerte en contacto! Te responderé lo más pronto posible. ¡Hasta pronto!</p>
+            <button onClick={() => setIsModalOpen(false)} className="btn rounded-full border border-white/50 max-w-[170px]
+          px-8 transition-all duration-300 flex items-center justify-center overflow-hidden
+          hover:border-accent group mt-4">
+            <span className='group-hover:-translate-y-[120%] group-hover:opacity-0
+            transition-all duration-500 text-white'>Cerrar</span>
+            <CiCircleRemove className='-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0
+            group-hover:opacity-100 transition-all duration-300 absolute text-[22px] text-white'/>
+          </button>
+          </div>
+        </Modal>
+      </div>
+
+
+
+
+
+      {/* <button onClick={openModal} className="btn rounded-full border border-white max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group">
+        Abrir Modal
+      </button>
+ */}
 
     </section>
 

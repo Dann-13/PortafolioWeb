@@ -88,7 +88,7 @@ const About = () => {
   const [index, setIndex] = useState(0);
 
   return (
-    <div className=" py-28 bg-primary/30 text-center xl:text-left">
+    <div className=" py-32 xl:pb-0 bg-primary/30 text-center xl:text-left">
 
 
       <motion.div
@@ -117,7 +117,7 @@ const About = () => {
             className="max-w-[500px] mx-auto xl:mx-0 mb-6 xl:mb-12 px-2 xl:px-0">
             Soy un amante de la tecnología desde que era niño, mi curiosidad me ha llevado a
             sumergirme profundamente en el mundo del desarrollo de software.
-            Durante mis años de estudio en la universidad, he adquirido conocimientos sólidos en
+            Durante mis años de estudio en la universidad y en diferentes programas de formacion, he adquirido conocimientos sólidos en
             lenguajes de programación, diseño de software.
           </motion.p>
           {/**Counters */}
