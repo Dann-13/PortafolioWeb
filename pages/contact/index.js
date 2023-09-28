@@ -2,11 +2,8 @@ import { BsArrowRight } from 'react-icons/bs';
 import { motion } from 'framer-motion';
 import { fadeIn } from '../../variants';
 import emailJs from '@emailjs/browser'
-import Modal from 'react-modal';
-import {CiCircleRemove} from 'react-icons/ci'
 import React, { useRef, useState } from 'react';
-
-Modal.setAppElement('#__next');
+import ModalMessage from '../../components/ModalMessage';
 
 const Contact = () => {
 
@@ -20,15 +17,6 @@ const Contact = () => {
 
   const refForm = useRef();
 
-  const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      transform: 'translate(-50%, -50%)',
-    },
-  };
   const openModal = (message) => {
     setSuccessMessage(message);
     setIsModalOpen(true);
@@ -85,7 +73,12 @@ const Contact = () => {
           <h1 className="title-font mb-4 text-2xl font-medium text-white sm:text-3xl">¡Contactame!</h1>
 
         </div>
-        <div className="mx-auto md:w-2/3 lg:w-1/2">
+        <motion.div 
+        variants={fadeIn('up', 0.2)}
+        initial='hidden'
+        animate="show"
+        exit="hidden"
+        className="mx-auto md:w-2/3 lg:w-1/2">
 
           <div className="">
             <form ref={refForm} onSubmit={handleSubmit} className='-m-2 flex flex-wrap items-center'>
@@ -169,44 +162,11 @@ const Contact = () => {
               </div>
             </form>
           </div>
-        </div>
+        </motion.div>
 
       </div>
       {/* Modal */}
-
-      <div className="bg-white">
-        {/* Contenido de la página */}
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          className="modal fixed inset-0 flex items-center justify-center z-50 "
-          overlayClassName="modal-overlay fixed inset-0"
-          contentLabel="Ejemplo de Modal"
-        >
-          <div className="modal-content bg-primary rounded-xl xl:w-1/2 p-4 border-2 border-accent w-[300px] ">
-            <h2 className="text-xl font-bold mb-4 text-white">¡Su mensaje se ha enviado exitosamente!</h2>
-            <p className="text-gray-100 text-[14px]">¡Gracias por ponerte en contacto! Te responderé lo más pronto posible. ¡Hasta pronto!</p>
-            <button onClick={() => setIsModalOpen(false)} className="btn rounded-full border border-white/50 max-w-[170px]
-          px-8 transition-all duration-300 flex items-center justify-center overflow-hidden
-          hover:border-accent group mt-4">
-            <span className='group-hover:-translate-y-[120%] group-hover:opacity-0
-            transition-all duration-500 text-white'>Cerrar</span>
-            <CiCircleRemove className='-translate-y-[120%] opacity-0 group-hover:flex group-hover:-translate-y-0
-            group-hover:opacity-100 transition-all duration-300 absolute text-[22px] text-white'/>
-          </button>
-          </div>
-        </Modal>
-      </div>
-
-
-
-
-
-      {/* <button onClick={openModal} className="btn rounded-full border border-white max-w-[170px] px-8 transition-all duration-300 flex items-center justify-center overflow-hidden hover:border-accent group">
-        Abrir Modal
-      </button>
- */}
-
+      <ModalMessage isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} message={successMessage} />
     </section>
 
   )

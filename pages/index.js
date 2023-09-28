@@ -59,7 +59,7 @@ const Home = () => {
           animate={{ opacity: 1 }} // Anima la opacidad a 1
           exit={{ opacity: 0 }} // Ajusta el estado de salida según tus necesidades
           transition={{ duration: 2, delay: 0.2, ease: 'easeInOut' }}
-          className="w-full h-full max-w-[300px] max-h-[250px] absolute lg:right-[15%] xl:top-[30%]">
+          className="w-full h-full max-w-[300px] max-h-[250px] absolute lg:right-[15%] xl:top-[35%]">
           <Avatar />
         </motion.div>
       </div>

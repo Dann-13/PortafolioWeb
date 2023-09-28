@@ -22,7 +22,7 @@ const Services = () => {
           initial='hidden'
           animate='show'
           exit='hidden'
-          className='mb-4 max-w-[400px] mx-auto lg:mx-0'> En este espacio, te invito a explorar mi mundo de creatividad, innovación y soluciones técnicas
+          className='mb-4 max-w-[400px] mx-auto lg:mx-0'> Te invito a explorar mi mundo de creatividad, innovación y soluciones técnicas
           </motion.p>
         </div>
         <motion.div 
