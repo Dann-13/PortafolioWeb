@@ -5,12 +5,7 @@ import 'swiper/css/pagination'
 
 // icons
 import {
-  RxCrop,
-  RxDatabase,
-  RxDesktop,
   RxPencil2,
-  RxReader,
-  RxRocket,
   RxArrowTopRight
 } from 'react-icons/rx'
 import{

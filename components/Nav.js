@@ -37,7 +37,7 @@ const Nav = () => {
     px-4 md:px-40 xl:px-0 h-[80px] bg-red-200/10 xl:h-max py-0  backdrop-blur-sm
     text-3xl xl:text-xl xl:rounded-full'>
       {navData.map((link, index) => {
-        console.log("link " + link.path)
+        
         return (
           <Link className={`${link.path === pathname && 'text-accent'} 
           relative flex items-center group hover:text-accent transition-all

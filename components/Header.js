@@ -9,7 +9,7 @@ const Header = () => {
         <div className="flex flex-col lg:flex-row justify-between
         items-center">
           <Link href={'/'}>
-          <Image src={'/avatar.png'} width={208} height={30} priority={true}/>
+          <Image src={'/avatar.png'} width={208} height={30} priority={true} alt="avatar"/>
           </Link>
 
           <Socials />
