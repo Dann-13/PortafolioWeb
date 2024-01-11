@@ -45,10 +45,10 @@ const Work = () => {
     },
     {
       id: 4,
-      title: 'Ecommerce Sanity',
+      title: 'Ecommerce Sanity Meraki',
       image: Sanity,
       description: 'Ecommerce desarrollado en React con el cms Sanity',
-      linkGit: 'https://github.com/Dann-13/Ecommerce-Next',
+      linkGit: 'https://main--merakieve.netlify.app',
     }
     // Agrega más proyectos aquí si es necesario
   ];
@@ -109,7 +109,7 @@ const Work = () => {
                   <p className='mt-2 text-gray-300 text-center'>
                     {data.description}
                     <br />
-                    <a className='text-accent' target='_blank' rel='noopener noreferrer' href={data.linkGit}>Git</a>
+                    <a className='text-accent' target='_blank' rel='noopener noreferrer' href={data.linkGit}>Ver</a>
                   </p>
                 )}
               </div>
