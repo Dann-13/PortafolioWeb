@@ -49,19 +49,24 @@ const Contact = () => {
 
 
     // Si todas las validaciones pasan, enviar el formularios
-    const serviceId = 'service_tvuj14w';
-    const templatedId = 'template_olumtxb';
-    const apiKey = 'WZXL1p2dlu9uSgos0';
+    const serviceId = process.env.NEXT_PUBLIC_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_TEMPLATE_ID;
+    const apiKey = process.env.NEXT_PUBLIC_API_KEY;
+    const formData = {
+      username: refForm.current.username.value,  // Pasando el valor del nombre
+      email: refForm.current.email.value,        // Pasando el valor del email
+      message: refForm.current.message.value     // Pasando el valor del mensaje
+    };
     emailJs
-      .sendForm(serviceId, templatedId, refForm.current, apiKey)
+      .send(serviceId, templateId, formData, apiKey)  // Asegúrate de enviar 'formData' en lugar de 'refForm.current'
       .then((result) => {
-        console.log(result.text);
         openModal('Mensaje enviado'); // Mostrar la modal con el mensaje de éxito
         refForm.current.reset(); // Limpiar los campos del formulario
       })
-      .catch((error) => console.error(error));
-
-
+      .catch((error) => {
+        console.error(error);
+        setErrorMessage('Hubo un error al enviar el mensaje.');
+      });
   }
 
   return (

@@ -4,6 +4,7 @@ import con from "../../public/Conversor.png"
 import Hotel from "../../public/Hotel.png"
 import Pong from "../../public/Pong.png"
 import Sanity from "../../public/Sanity.png"
+import Beyond from "../../public/Beyond.png"
 import { fadeIn } from '../../variants'
 import { TypeAnimation } from 'react-type-animation';
 const Work = () => {
@@ -47,8 +48,15 @@ const Work = () => {
       id: 4,
       title: 'Ecommerce Sanity Meraki',
       image: Sanity,
-      description: 'Ecommerce desarrollado en React con el cms Sanity',
+      description: 'Pagina Web Restaurante',
       linkGit: 'https://main--merakieve.netlify.app',
+    },
+    {
+      id: 5,
+      title: 'Beyond',
+      image: Beyond,
+      description: 'Ecommerce desarrollado en React con el cms Sanity',
+      linkGit:'https://beyond-naturalandco.com/'
     }
     // Agrega más proyectos aquí si es necesario
   ];
